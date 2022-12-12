@@ -1,4 +1,4 @@
-use std::collections::*;
+use helpers::*;
 
 fn load_input() -> String {
     std::fs::read_to_string("input").unwrap()
@@ -10,17 +10,6 @@ fn main() {
     println!("part 1 {}", part1(&input));
     println!("part 2 {}", part2(&input));
 }
-
-
-pub trait CollectVec: Iterator + Sized {
-    fn collectvec(self) -> Vec<Self::Item> {
-        self.collect()
-    }
-    fn collectset(self) -> BTreeSet<Self::Item> where Self::Item: Ord {
-        self.collect()
-    }
-}
-impl<I: Iterator> CollectVec for I {}
 
 struct Monkey<'a> {
     items: Vec<i64>,
